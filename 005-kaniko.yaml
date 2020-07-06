@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Pod
+metadata:
+  name: kaniko
+  annotations:
+    com.cloudbees.sidecar-injector/inject: no
+spec:
+  containers:
+  - name: jnlp
+    image: cloudbees/cloudbees-core-agent:2.222.2.1
+    imagePullPolicy: Always
+    command:
+    - /bin/sh
+    tty: true
+  volumes:
+  - name: jenkins-docker-cfg
+    projected:
+      sources:
+      - secret:
+          name: artifactory-rco.centene.com
+          items:
+          - key: .dockerconfigjson
+            path: config.json
+  
+  
