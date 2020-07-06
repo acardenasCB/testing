@@ -12,14 +12,6 @@ spec:
     command:
     - /bin/sh
     tty: true
-  volumes:
-  - name: jenkins-docker-cfg
-    projected:
-      sources:
-      - secret:
-          name: artifactory-rco.centene.com
-          items:
-          - key: .dockerconfigjson
-            path: config.json
+
   
   
