@@ -15,9 +15,7 @@ pipeline {
                     def workspace = pwd()
                     //checkout scm
 					echo "hello"
-					withCredentials([file(credentialsId: 'docker-config', variable: 'FILE')]) {
 						sh 'cp $FILE config.json'
-					}
 					sh 'ls -ltr'
 					echo 'Execute test cases'
                     sh '/kaniko/executor --insecure --skip-tls-verify --context "' + workspace + '" --dockerfile "' + workspace + '/Dockerfile.kaniko"  --cleanup'
