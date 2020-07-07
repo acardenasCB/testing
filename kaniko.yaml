@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Pod
 metadata:
-  name: pepito
+  name: kaniko
   annotations:
     com.cloudbees.sidecar-injector/inject: no
 spec:
